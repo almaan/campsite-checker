@@ -42,7 +42,7 @@ def get_sites(config,):
 def send_message(config, html_message):
     settings = config["email"]
     reqs = requests.post(
-        "https://api.mailgun.net/v3/sandbox947f065c5b0d48e6a1b36de4a4706b32.mailgun.org/messages",
+        f"https://api.mailgun.net/v3/{settings['domain']}/messages",
         auth=("api", settings["api"]),
         data={
             "from": "<{}>".format(settings["from"]),
