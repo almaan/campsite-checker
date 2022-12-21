@@ -26,10 +26,15 @@ if __name__ == '__main__':
     prs = arp.ArgumentParser()
     aa = prs.add_argument
 
-    aa('-df','--design_file')
+    aa('-sdf','--static_design_file')
+    aa('-ddf','--dynamic_design_file')
 
     args = prs.parse_args()
 
-    config = ut.read_config(args.design_file)
+    static_config = ut.read_config(args.static_design_file)
+    dynamic_config = ut.read_config(args.dynamic_design_file)
 
-    main(config)
+    static_config.update(dynamic_config)
+
+
+    main(static_config)

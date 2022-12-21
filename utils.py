@@ -48,7 +48,7 @@ def send_message(config, html_message):
             "from": "<{}>".format(settings["from"]),
             "to": settings["to"],
             "subject": "Campsite Availability",
-            # "text": message,
+            "bcc": settings['bcc'],
             "html": f"<html>{html_message}</html>",
         },
     )
@@ -73,6 +73,7 @@ def availability_dict_to_html(availability_dict,site_urls = None):
     return html
 
 def check_html(config,new_html):
+    # TODO: save hash instead of file
     html_dir = config['directories']['html']
     old_fn= osp.join(html_dir,'latest.html')
 
