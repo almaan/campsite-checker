@@ -23,10 +23,17 @@ class CampGround:
         self.url = f"https://www.recreation.gov/api/camps/availability/campground/{campsite_id}/month"
         self.site_base_url = 'https://www.recreation.gov/camping/campsites/'
 
-        self.header = {"User-Agent": 'Mozilla/5.0 (Windows; U; Windows NT 5.2; en-US) AppleWebKit/525.19 (KHTML, like Gecko) Chrome/0.2.151.0 Safari/525.19'}
+        # self.header = {"User-Agent": 'Mozilla/5.0 (Windows; U; Windows NT 5.2; en-US) AppleWebKit/525.19 (KHTML, like Gecko) Chrome/0.2.151.0 Safari/525.19'}
+        self.header = {"User-Agent": 'Defined'}
         self.ground_name = get_ground_name(self.campsite_id, self.header)
 
     def get_availability(self, dates,return_urls = True):
+
+        # session = requests.Session()
+        # session.proxies = {
+            # 'http': 'http://67.205.191.44:8080',
+            # 'https': 'http://67.205.191.44:8080',
+        # }
 
         if not isinstance(dates, list):
             dates = [dates]
